@@ -1,0 +1,10 @@
+@if (reviews.length > 0) {
+  @for (review of reviews; track review.author_name + review.time) {
+    <div class="review-card">
+      <p>{{ review.author_name }}</p>
+      <p>{{ review.text }}</p>
+    </div>
+  }
+} @else {
+  <p>Aún no hay reseñas para este negocio.</p>
+}
