@@ -164,3 +164,31 @@ API de Place Details: Ideal para obtener detalles básicos y un resumen rápido 
 API de Google My Business: Ideal para obtener todas las reseñas. Requiere ser el propietario del negocio y un proceso de autenticación más complejo.
 
 Si necesitas mostrar más reseñas que las cinco que obtienes actualmente, la única forma de hacerlo es utilizando la API de Google My Business.
+
+
+
+
+
+
+
+Diferencias Clave
+La principal diferencia radica en el tipo de acceso que necesitas:
+
+API de Places: Es una API pública. Tu clave de API es suficiente para autenticarte, ya que el servicio es para obtener información pública sobre lugares. La única restricción es controlar el uso de la clave.
+
+API de Google My Business: Es una API privada. Para acceder a ella, debes demostrar que eres el propietario o un gestor autorizado del negocio. No se usa una simple clave de API, sino un proceso de autenticación más robusto llamado OAuth 2.0.
+
+Proceso de Autenticación con Google My Business
+El flujo de trabajo es más complejo y requiere varios pasos:
+
+Activación de la API: En Google Cloud Console, debes habilitar la API de Google My Business.
+
+Configuración de OAuth: Debes crear credenciales de tipo ID de cliente de OAuth y configurar una pantalla de consentimiento de OAuth para tu aplicación.
+
+Flujo de autorización: Tu aplicación web debe redirigir al usuario (tú, en este caso) a una página de Google para que inicie sesión y otorgue permiso para acceder a los datos del negocio.
+
+Token de acceso: Después de que otorgas el permiso, Google devuelve a tu aplicación un "token de acceso" temporal que se usa para hacer las llamadas a la API de My Business.
+
+Obtención de datos: Solo con ese token de acceso puedes hacer peticiones a los puntos finales de la API para, por ejemplo, obtener todas las reseñas.
+
+Debido a que este proceso es más complejo y requiere interacción del usuario (o una configuración de servicio a servicio), no se puede resolver con un simple proxy como lo hicimos con la API de Places. El proceso de OAuth está diseñado específicamente para garantizar que solo los propietarios de los datos puedan acceder a ellos.
