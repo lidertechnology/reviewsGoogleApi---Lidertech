@@ -1,0 +1,9 @@
+"serve": {
+  "builder": "@angular/build:dev-server",
+  "options": {
+    "proxyConfig": "proxy.conf.json"
+  },
+  ...
+}
+
+En este caso buscas la lineas que se refieres serve y dento en options colocas proxyConfig.json
